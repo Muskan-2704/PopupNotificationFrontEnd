@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "Pop-Up Notification",
+    "description": "This extension will show notifications on Google Interface",
+    "version": "0.0.1",
+    "permissions": [ "identity","storage"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0310dHNYhqwVHtYs28YQqEeZMqh4bbpFF38xB14HJinY2K6GnVTqQBUxOFD8hbF2zoHEmKhXruZBvoJeFNyBdU5l8X3WRQfdk0QwaqQagZAY3PbXoCad38yAoCxP/Kcc0v3NWCvGc9TgvD/6Nxy5HkTZ/eb5j/jceAiQgvL4OoasicoIihUSUsl5R06rzx2P6gOQ33UwLHbKkkyunc0fGXjJDYKUIf9qat/RrJW9UowzXR9RCdGwhbNSubNxFp4ahiX7unZGNDFaINyp5TpY06cSP8X6OZVdDJYbamuZ3kVAUB26f3oUHkpQn6FE58r+HzWpb3Z1lg0Y0b0MlQFwpwIDAQAB",
+
+    "icons": {
+        "128": "logo.png",
+        "64": "logo.png"
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://mail.google.com/*","https://calendar.google.com/*","https://drive.google.com/*"],
+          "css": ["content-styles.css"],
+          "js": ["js/jquery.min.js","js/main.js"],
+          "run_at": "document_idle",
+          "all_frames": true
+        }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "https://apis.google.com/js/api.js",
+          "js/*.js"
+        ],
+        "matches": ["https://chat.google.com/*", "https://mail.google.com/*","https://calendar.google.com/*","https://drive.google.com/*"]
+      }
+    ]
+  }
